@@ -19,3 +19,16 @@
     - name: Set Zscaler Auth Token
       set_fact:
         zscaler_auth_token: "{{ auth_response.json.token }}"
+
+    - name: Get List of Users from Zscaler
+      uri:
+        url: "{{ zscaler_cloud_url }}/api/v1/users"
+        method: GET
+        headers:
+          Content-Type: "application/json"
+          Authorization: "Bearer {{ zscaler_auth_token }}"
+        return_content: yes
+      register: users_response
+    
+    - debug:
+        var: users_response.json    
