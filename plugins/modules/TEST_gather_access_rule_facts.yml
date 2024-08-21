@@ -12,8 +12,3 @@
       zscaler.zpacloud.zpa_policy_access_rule_facts:
         provider: "{{ zpa_cloud }}"
         name: "Policy Access Rule - Example"
-
-    - name: Get Details of a Policy Access Rule by ID
-      zscaler.zpacloud.zpa_policy_access_rule_facts:
-        provider: "{{ zpa_cloud }}"
-        id: "72058688180846592"
