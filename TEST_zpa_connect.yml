@@ -1,5 +1,6 @@
 ---
 - name: Connect to Zscaler Cloud
+  hosts: All
   tasks:
     - name: Authenticate with Zscaler API
       uri:
