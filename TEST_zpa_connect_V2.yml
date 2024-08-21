@@ -5,7 +5,7 @@
     - name: Authenticate with Zscaler API
       uri:
         url: "{{ zscaler_cloud_url }}/api/v1/authenticatedSession"
-        method: POST
+        method: GET
         headers:
           Content-Type: "application/json"
         body_format: json
