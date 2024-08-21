@@ -1,0 +1,14 @@
+---
+- name: ZPA Integration Tests
+  hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: Set up environment variables
+      ansible.builtin.set_fact:
+        zpa_cloud:
+          client_id: '{{ lookup("env", "ZPA_CLIENT_ID") }}'
+          client_secret: '{{ lookup("env", "ZPA_CLIENT_SECRET") | default(omit) }}'
+          customer_id: '{{ lookup("env", "ZPA_CUSTOMER_ID") | default(omit) }}'
+          cloud: '{{ lookup("env", "ZPA_CLOUD") | default(omit) }}'
+      no_log: true
