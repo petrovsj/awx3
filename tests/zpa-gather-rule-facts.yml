@@ -1,0 +1,4 @@
+---
+- name: Get Details of All Policy Access Rules
+  zscaler.zpacloud.zpa_policy_access_rule_facts:
+    provider: "{{ zpa_cloud }}"
