@@ -1,6 +1,6 @@
 ---
 - name: Connect to Zscaler Cloud
-  hosts: d31kquknww6614.cloudfront.net
+  hosts: 18.66.27.75
   tasks:
     - name: Authenticate with Zscaler API
       uri:
