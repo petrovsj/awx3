@@ -4,15 +4,14 @@
   tasks:
     - name: Authenticate with Zscaler API
       uri:
-        url: "{{ zscaler_cloud_url }}/api/v1/authenticatedSession"
+        url: https://config.zpabeta.net/api/v1/authenticatedSession"
         method: GET
         headers:
           Content-Type: "application/json"
         body_format: json
         body:
-          username: "{{ zscaler_username }}"
-          password: "{{ zscaler_password }}"
-          apiKey: "{{ zscaler_api_key }}"
+          client_id: "{{ zscaler_client_id }}"
+          client_secret: "{{ zscaler_client_secret }}"
         return_content: yes
         validate_certs: no  # Only for testing
       register: auth_response
