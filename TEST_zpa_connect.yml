@@ -1,6 +1,6 @@
 ---
 - name: Connect to Zscaler Cloud
-  hosts: 18.66.27.75
+  hosts: localhost
   tasks:
     - name: Authenticate with Zscaler API
       uri:
