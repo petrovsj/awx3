@@ -1,0 +1,21 @@
+---
+- name: Connect to Zscaler Cloud
+  hosts: localhost
+  tasks:
+    - name: Authenticate with Zscaler API
+      uri:
+        url: "{{ zscaler_cloud_url }}/api/v1/authenticatedSession"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body:
+          username: "{{ zscaler_username }}"
+          password: "{{ zscaler_password }}"
+          apiKey: "{{ zscaler_api_key }}"
+        return_content: yes
+      register: auth_response
+
+    - name: Set Zscaler Auth Token
+      set_fact:
+        zscaler_auth_token: "{{ auth_response.json.token }}"
