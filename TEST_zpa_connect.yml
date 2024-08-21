@@ -1,6 +1,5 @@
 ---
 - name: Connect to Zscaler Cloud
-  hosts: admin.zpabeta.net
   tasks:
     - name: Authenticate with Zscaler API
       uri:
