@@ -1,0 +1,37 @@
+- name: Authenticate and interact with Zscaler API
+  hosts: localhost
+  vars:
+    zscaler_api_url: "https://config.zpabeta.net/signin" 
+    zscaler_api_request_url: "https://config.zpabeta.net/your_api_endpoint"  
+
+  tasks:
+
+    - name: Obtain authentication token from Zscaler API
+      uri:
+        url: "https://config.zpabeta.net/signin"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body:
+          client_id: "{{ lookup('env', 'ZSCALER_CLIENT_ID') }}"
+          client_secret: "{{ lookup('env', 'ZSCALER_CLIENT_SECRET') }}"
+        body_format: json
+        return_content: yes
+      register: auth_response
+
+    - name: Extract the authentication token
+      set_fact:
+        zscaler_token: "{{ auth_response.json.access_token }}"  
+
+    - name: Use the token for subsequent API requests
+      uri:
+        url: "{{ zscaler_api_request_url }}"
+        method: GET  # or POST, PUT, DELETE depending on your requirement
+        headers:
+          Authorization: "Bearer {{ zscaler_token }}"
+        return_content: yes
+      register: api_response
+
+    - name: Output the API response
+      debug:
+        var: api_response.json
