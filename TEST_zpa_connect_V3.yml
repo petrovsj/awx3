@@ -13,7 +13,7 @@
         body:
           client_id: "{{ lookup('env', 'ZSCALER_CLIENT_ID') }}"
           client_secret: "{{ lookup('env', 'ZSCALER_CLIENT_SECRET') }}"
-        body_format:  x-www-form-urlencoded
+        body_format: json
         return_content: yes
       register: auth_response
 
