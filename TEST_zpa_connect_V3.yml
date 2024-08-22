@@ -10,12 +10,10 @@
       uri:
         url: "https://config.zpabeta.net/signin"
         method: POST
-        headers:
-          Content-Type: "application/json"
         body:
           client_id: "{{ lookup('env', 'ZSCALER_CLIENT_ID') }}"
           client_secret: "{{ lookup('env', 'ZSCALER_CLIENT_SECRET') }}"
-        body_format: json
+        body_format:  x-www-form-urlencoded
         return_content: yes
       register: auth_response
 
