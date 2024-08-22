@@ -8,7 +8,7 @@
         body:
           client_id: "{{ lookup('env', 'ZSCALER_CLIENT_ID') }}"
           client_secret: "{{ lookup('env', 'ZSCALER_CLIENT_SECRET') }}"
-          cloud: "{{ lookup('env', 'ZPA_CLOUD') }}"
+          cloud_id: "{{ lookup('env', 'ZPA_CLOUD_ID') }}"
           customer_id: "{{ lookup('env', 'ZPA_CUSTOMER_ID') }}"
         body_format: json
         return_content: yes
