@@ -26,7 +26,7 @@
     - name: Use the token for subsequent API requests
       uri:
         url: "{{ zscaler_api_request_url }}"
-        method: GET  # or POST, PUT, DELETE depending on your requirement
+        method: GET 
         headers:
           Authorization: "Bearer {{ zscaler_token }}"
         return_content: yes
